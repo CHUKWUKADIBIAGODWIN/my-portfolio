@@ -275,9 +275,7 @@
       overflow: hidden;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* keeps it nicely cropped */
-    }
-	
+      object-fit: cover;
     }
 
     .avatar-initials {
@@ -534,116 +532,371 @@
 
     /* WORK / PROJECTS */
     .work-grid {
-     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#080808;--surface:#111111;--accent:#00FF94;--accent2:#FF2D78;--accent3:#FFD700;
-  --text:#F0EDE6;--muted:#666;--border:rgba(255,255,255,0.08);
-}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:2rem;}
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
 
-.section-label{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
-.section-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1;letter-spacing:.02em;margin-bottom:3rem;}
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: none;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,255,148,0.3);
+    }
 
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+    .project-thumb {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.project-card{background:var(--surface);border:1px solid var(--border);overflow:hidden;position:relative;transition:transform .3s,border-color .3s;cursor:pointer;}
-.project-card:hover{transform:translateY(-8px);border-color:rgba(0,255,148,.3);}
+    .project-thumb-1 { background: linear-gradient(135deg, #0a0a1a, #1a0a2e); }
+    .project-thumb-2 { background: linear-gradient(135deg, #0d1a0d, #0a2e1a); }
+    .project-thumb-3 { background: linear-gradient(135deg, #1a0d0d, #2e0a0a); }
+    .project-thumb-4 { background: linear-gradient(135deg, #0a1a1a, #0a2e2e); }
+    .project-thumb-5 { background: linear-gradient(135deg, #1a1400, #2e2200); }
+    .project-thumb-6 { background: linear-gradient(135deg, #12001a, #200030); }
 
-.project-thumb{height:240px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.project-thumb-1{background:linear-gradient(135deg,#0a0a1a,#1a0a2e);}
-.project-thumb-2{background:linear-gradient(135deg,#0d1a0d,#0a2e1a);}
-.project-thumb-3{background:linear-gradient(135deg,#1a0d0d,#2e0a0a);}
-.project-thumb-4{background:linear-gradient(135deg,#0a1a1a,#0a2e2e);}
-.project-thumb-5{background:linear-gradient(135deg,#1a1400,#2e2200);}
-.project-thumb-6{background:linear-gradient(135deg,#12001a,#200030);}
+    .thumb-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(255,255,255,0.04);
+      letter-spacing: 0.1em;
+      user-select: none;
+      position: absolute;
+    }
 
-.thumb-num{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(255,255,255,.04);letter-spacing:.1em;user-select:none;position:absolute;}
-.thumb-mockup{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+    .thumb-mockup {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
 
-/* Mockup styles */
-.mock-browser{width:100%;max-width:280px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);border-radius:6px;overflow:hidden;}
-.mock-bar{height:24px;background:rgba(255,255,255,.05);display:flex;align-items:center;padding:0 .5rem;gap:.3rem;}
-.mock-dot{width:6px;height:6px;border-radius:50%;}
-.mock-url{flex:1;height:10px;background:rgba(255,255,255,.06);border-radius:2px;margin-left:.5rem;}
-.mock-body{padding:.75rem;display:flex;flex-direction:column;gap:.4rem;}
-.mock-hero-block{height:60px;border-radius:3px;display:flex;align-items:center;justify-content:center;}
-.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;}
-.mock-card{height:40px;border-radius:3px;}
-.mock-line{height:8px;border-radius:2px;background:rgba(255,255,255,.07);}
-.mock-line.short{width:60%;}
+    /* Mockup components */
+    .mock-browser {
+      width: 100%;
+      max-width: 280px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .mock-bar {
+      height: 24px;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      padding: 0 0.5rem;
+      gap: 0.3rem;
+    }
+    .mock-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .mock-url {
+      flex: 1;
+      height: 10px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      margin-left: 0.5rem;
+    }
+    .mock-body {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .mock-hero-block {
+      height: 60px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem;
+    }
+    .mock-card { height: 40px; border-radius: 3px; }
+    .mock-line { height: 8px; border-radius: 2px; background: rgba(255,255,255,0.07); }
+    .mock-line.short { width: 60%; }
 
-.mock-dashboard{width:100%;max-width:300px;}
-.mock-sidebar{width:55px;background:rgba(0,255,148,.06);border-right:1px solid rgba(0,255,148,.1);}
-.mock-dash-inner{display:flex;gap:.35rem;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden;padding:.5rem;}
-.mock-content{flex:1;display:flex;flex-direction:column;gap:.3rem;}
-.mock-chart-bar{display:flex;align-items:flex-end;gap:3px;height:50px;}
-.mock-bar-item{flex:1;border-radius:2px 2px 0 0;}
-.mock-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem;}
-.mock-stat{height:28px;border-radius:3px;}
+    .mock-dashboard { width: 100%; max-width: 300px; }
+    .mock-dash-inner {
+      display: flex;
+      gap: 0.35rem;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 0.5rem;
+    }
+    .mock-sidebar {
+      width: 55px;
+      background: rgba(0,255,148,0.06);
+      border-right: 1px solid rgba(0,255,148,0.1);
+    }
+    .mock-content { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+    .mock-chart-bar { display: flex; align-items: flex-end; gap: 3px; height: 50px; }
+    .mock-bar-item { flex: 1; border-radius: 2px 2px 0 0; }
+    .mock-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.3rem; }
+    .mock-stat { height: 28px; border-radius: 3px; }
 
-.mock-brand{display:flex;flex-direction:column;align-items:center;gap:.5rem;}
-.mock-logo-shape{width:70px;height:70px;display:flex;align-items:center;justify-content:center;}
-.mock-logo-hex{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.05em;}
-.mock-palette{display:flex;gap:.3rem;}
-.mock-swatch{width:28px;height:28px;border-radius:3px;}
-.mock-type-stack{display:flex;flex-direction:column;gap:.2rem;align-items:center;}
+    .mock-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .mock-logo-shape {
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mock-logo-hex { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.05em; }
+    .mock-palette { display: flex; gap: 0.3rem; }
+    .mock-swatch { width: 28px; height: 28px; border-radius: 3px; }
+    .mock-type-stack { display: flex; flex-direction: column; gap: 0.2rem; align-items: center; }
 
-.mock-mobile-pair{display:flex;gap:.75rem;align-items:center;}
-.mock-phone{width:80px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;padding:.4rem;}
-.mock-phone-notch{width:24px;height:5px;background:rgba(255,255,255,.15);border-radius:3px;margin:0 auto .3rem;}
-.mock-app-grid{display:grid;grid-template-columns:1fr 1fr;gap:.2rem;}
-.mock-app-icon{height:22px;border-radius:4px;}
-.mock-feed{display:flex;flex-direction:column;gap:.25rem;margin-top:.25rem;}
-.mock-feed-item{height:16px;border-radius:2px;background:rgba(255,255,255,.06);}
+    .mock-mobile-pair { display: flex; gap: 0.75rem; align-items: center; }
+    .mock-phone {
+      width: 80px;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0.4rem;
+    }
+    .mock-phone-notch {
+      width: 24px; height: 5px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px;
+      margin: 0 auto 0.3rem;
+    }
+    .mock-app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem; }
+    .mock-app-icon { height: 22px; border-radius: 4px; }
+    .mock-feed { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.25rem; }
+    .mock-feed-item { height: 16px; border-radius: 2px; background: rgba(255,255,255,0.06); }
 
-.mock-3d-canvas{width:100%;max-width:280px;background:rgba(0,0,0,.5);border:1px solid rgba(255,45,120,.15);border-radius:6px;overflow:hidden;padding:1rem;}
-.mock-3d-viewport{height:100px;border-radius:4px;background:linear-gradient(135deg,rgba(255,45,120,.08),rgba(0,255,148,.05));display:flex;align-items:center;justify-content:center;position:relative;}
-.mock-3d-obj{width:60px;height:60px;border:2px solid rgba(0,255,148,.5);transform:rotate(20deg) skewX(-5deg);position:relative;}
-.mock-3d-obj::after{content:'';position:absolute;inset:8px;border:1px solid rgba(255,45,120,.4);}
-.mock-toolbar{display:flex;gap:.3rem;margin-top:.5rem;}
-.mock-tool{height:18px;flex:1;border-radius:2px;background:rgba(255,255,255,.05);}
-.mock-tool.active{background:rgba(0,255,148,.2);}
+    .mock-motion { width: 100%; max-width: 280px; }
+    .mock-timeline {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,215,0,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      padding: 0.6rem;
+    }
+    .mock-tl-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .mock-tl-title { font-family: 'Space Mono', monospace; font-size: 0.5rem; color: rgba(255,215,0,0.6); letter-spacing: 0.1em; }
+    .mock-tl-controls { display: flex; gap: 0.3rem; }
+    .mock-tl-btn { width: 14px; height: 14px; border-radius: 2px; background: rgba(255,255,255,0.06); }
+    .mock-tl-btn.play { background: rgba(0,255,148,0.2); }
+    .mock-track { display: flex; flex-direction: column; gap: 0.3rem; }
+    .mock-track-row { display: flex; align-items: center; gap: 0.35rem; }
+    .mock-track-label { width: 40px; height: 8px; background: rgba(255,255,255,0.06); border-radius: 2px; flex-shrink: 0; }
+    .mock-track-line { flex: 1; height: 14px; background: rgba(255,255,255,0.04); border-radius: 2px; position: relative; overflow: hidden; }
+    .mock-track-clip { position: absolute; top: 2px; bottom: 2px; border-radius: 2px; }
+    .mock-playhead { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(0,255,148,0.8); }
 
-.mock-motion{width:100%;max-width:280px;}
-.mock-timeline{background:rgba(0,0,0,.6);border:1px solid rgba(255,215,0,.1);border-radius:6px;overflow:hidden;padding:.6rem;}
-.mock-tl-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;}
-.mock-tl-title{font-family:'Space Mono',monospace;font-size:.5rem;color:rgba(255,215,0,.6);letter-spacing:.1em;}
-.mock-tl-controls{display:flex;gap:.3rem;}
-.mock-tl-btn{width:14px;height:14px;border-radius:2px;background:rgba(255,255,255,.06);}
-.mock-tl-btn.play{background:rgba(0,255,148,.2);}
-.mock-track{display:flex;flex-direction:column;gap:.3rem;}
-.mock-track-row{display:flex;align-items:center;gap:.35rem;}
-.mock-track-label{width:40px;height:8px;background:rgba(255,255,255,.06);border-radius:2px;flex-shrink:0;}
-.mock-track-line{flex:1;height:14px;background:rgba(255,255,255,.04);border-radius:2px;position:relative;overflow:hidden;}
-.mock-track-clip{position:absolute;top:2px;bottom:2px;border-radius:2px;}
-.mock-playhead{position:absolute;top:0;bottom:0;width:1px;background:rgba(0,255,148,.8);}
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,255,148,0.08);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-card:hover .project-overlay { opacity: 1; }
 
-.project-overlay{position:absolute;inset:0;background:rgba(0,255,148,.08);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
-.project-card:hover .project-overlay{opacity:1;}
-.view-btn{background:var(--accent);color:#000;font-family:'Space Mono',monospace;font-size:.7rem;padding:.6rem 1.2rem;letter-spacing:.1em;text-transform:uppercase;border:none;transform:translateY(10px);transition:transform .3s;cursor:pointer;}
-.project-card:hover .view-btn{transform:translateY(0);}
+    .view-btn {
+      background: var(--accent);
+      color: #000;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.6rem 1.2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: none;
+      transform: translateY(10px);
+      transition: transform 0.3s;
+    }
+    .project-card:hover .view-btn { transform: translateY(0); }
 
-.project-info{padding:1.5rem;}
-.project-type{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent2);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem;}
-.project-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.05em;margin-bottom:.5rem;}
-.project-desc{font-size:.85rem;color:var(--muted);line-height:1.6;}
-.project-meta{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;}
-.project-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-.tag{font-family:'Space Mono',monospace;font-size:.6rem;padding:.25rem .6rem;border:1px solid var(--border);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-.project-year{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.15);letter-spacing:.1em;}
+    .project-info { padding: 1.5rem; }
+    .project-type {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent2);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .project-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-top: 0.6rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid rgba(0,255,148,0.2);
+      background: rgba(0,255,148,0.04);
+    }
+    .result-badge::before { content: '▲'; font-size: 0.5rem; }
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .project-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.1em;
+    }
 
-.result-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;color:var(--accent);margin-top:.6rem;padding:.2rem .5rem;border:1px solid rgba(0,255,148,.2);background:rgba(0,255,148,.04);}
-.result-badge::before{content:'▲';font-size:.5rem;}
-
-@media(max-width:700px){.work-grid{grid-template-columns:1fr;}}
+    /* EXPANDED CARD */
+    .project-card.expanded {
+      grid-column: 1 / -1;
+      border-color: rgba(0,255,148,0.35);
+      transform: none;
+    }
+    .project-card.expanded .project-thumb {
+      height: 320px;
+    }
+    .project-card .expand-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease;
+      opacity: 0;
+    }
+    .project-card.expanded .expand-body {
+      max-height: 800px;
+      opacity: 1;
+    }
+    .expand-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+    }
+    .expand-block-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .expand-block-title::before {
+      content: '//';
+      opacity: 0.5;
+    }
+    .expand-block p {
+      font-size: 0.82rem;
+      color: rgba(240,237,230,0.6);
+      line-height: 1.75;
+    }
+    .expand-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .expand-list li {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .expand-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.6rem;
+    }
+    .expand-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .expand-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .expand-metric-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .expand-metric-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .view-btn.close-btn {
+      background: transparent;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+    }
+    .project-card.expanded .view-btn:not(.close-btn) { display: none; }
+    .close-btn { display: none; }
+    .project-card.expanded .close-btn {
+      display: inline-flex;
+      transform: translateY(0);
     }
 
     /* CONTACT */
-    .contact-section {
-      background: var(--surface);
-    }
+    .contact-section { background: var(--surface); }
 
     .contact-inner {
       max-width: 700px;
@@ -717,7 +970,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
       letter-spacing: 0.1em;
     }
 
-    /* WHATSAPP HOVER BUTTON */
+    /* WHATSAPP FAB */
     .whatsapp-fab {
       position: fixed;
       bottom: 2rem;
@@ -779,10 +1032,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
       transform: translateY(0);
     }
 
-    /* Glitch text effect */
-    .glitch {
-      position: relative;
-    }
+    /* Glitch */
+    .glitch { position: relative; }
     .glitch::before,
     .glitch::after {
       content: attr(data-text);
@@ -835,7 +1086,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
 
@@ -865,15 +1115,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
 
     <div class="hero-content">
       <div class="hero-tag">Available for projects</div>
-
       <h1 class="hero-name glitch" data-text="M@RKU$">
         M<span class="at">@</span>RKU<span>$</span>
       </h1>
-
       <p class="hero-sub">
         A web designer crafting <strong>bold digital experiences</strong> that don't blend in. Pixel-perfect interfaces, purposeful motion, and designs that actually convert.
       </p>
-
       <div class="hero-cta">
         <a href="#work" class="btn btn-primary">View My Work →</a>
         <a href="#contact" class="btn btn-ghost">Get In Touch</a>
@@ -883,7 +1130,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
     <div class="hero-visual">
       <div class="avatar-frame">
         <div class="avatar-bg-shape"></div>
-        <img class="avatar-img" src="image/markss.png" alt="Avatar">
+        <img class="avatar-img" src="C:\image\markss.png" alt="Avatar">
           <div class="avatar-initials">M$</div>
         </div>
         <div class="avatar-corner tl"></div>
@@ -987,303 +1234,532 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
 
     <div class="work-grid">
 
-  <!-- 01 -->
-  <div class="project-card">
-    <div class="project-thumb project-thumb-1">
-      <div class="thumb-num">01</div>
-      <div class="thumb-mockup">
-        <div class="mock-browser">
-          <div class="mock-bar">
-            <div class="mock-dot" style="background:#FF5F56"></div>
-            <div class="mock-dot" style="background:#FFBD2E"></div>
-            <div class="mock-dot" style="background:#27C93F"></div>
-            <div class="mock-url"></div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-hero-block" style="background:linear-gradient(135deg,rgba(255,45,120,.15),rgba(100,0,50,.2));">
-              <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:rgba(255,45,120,.9);letter-spacing:.1em;">LUXE</span>
-            </div>
-            <div class="mock-grid">
-              <div class="mock-card" style="background:rgba(255,45,120,.1);border:1px solid rgba(255,45,120,.15);"></div>
-              <div class="mock-card" style="background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.12);"></div>
-              <div class="mock-card" style="background:rgba(255,45,120,.07);border:1px solid rgba(255,45,120,.12);"></div>
-              <div class="mock-card" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);"></div>
-            </div>
-            <div class="mock-line"></div>
-            <div class="mock-line short"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-overlay"><button class="view-btn">View Project</button></div>
-    </div>
-    <div class="project-info">
-      <div class="project-type">E-Commerce · UI/UX</div>
-      <div class="project-title">LUXE Store UI</div>
-      <p class="project-desc">A premium fashion e-commerce experience for a Lagos-based luxury brand. Immersive product galleries, magnetic hover states, and a one-page checkout that cut cart abandonment by 40%.</p>
-      <div class="result-badge">+40% Checkout Conversion</div>
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="tag">Figma</span><span class="tag">HTML/CSS</span><span class="tag">GSAP</span>
-        </div>
-        <span class="project-year">2025</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 02 -->
-  <div class="project-card">
-    <div class="project-thumb project-thumb-2">
-      <div class="thumb-num">02</div>
-      <div class="thumb-mockup">
-        <div class="mock-dashboard">
-          <div class="mock-dash-inner">
-            <div class="mock-sidebar">
-              <div style="display:flex;flex-direction:column;gap:.3rem;padding:.3rem;">
-                <div style="width:28px;height:28px;border-radius:4px;background:rgba(0,255,148,.15);border:1px solid rgba(0,255,148,.2);"></div>
-                <div style="width:28px;height:6px;border-radius:2px;background:rgba(255,255,255,.06);"></div>
-                <div style="width:28px;height:6px;border-radius:2px;background:rgba(255,255,255,.06);"></div>
-                <div style="width:28px;height:6px;border-radius:2px;background:rgba(255,255,255,.06);"></div>
-                <div style="width:28px;height:6px;border-radius:2px;background:rgba(0,255,148,.08);"></div>
+      <!-- 01 – LUXE Store -->
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-1">
+          <div class="thumb-num">01</div>
+          <div class="thumb-mockup">
+            <div class="mock-browser">
+              <div class="mock-bar">
+                <div class="mock-dot" style="background:#FF5F56"></div>
+                <div class="mock-dot" style="background:#FFBD2E"></div>
+                <div class="mock-dot" style="background:#27C93F"></div>
+                <div class="mock-url"></div>
               </div>
-            </div>
-            <div class="mock-content">
-              <div class="mock-stat-row">
-                <div class="mock-stat" style="background:rgba(0,255,148,.08);border:1px solid rgba(0,255,148,.12);"></div>
-                <div class="mock-stat" style="background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.1);"></div>
-                <div class="mock-stat" style="background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.1);"></div>
-              </div>
-              <div class="mock-chart-bar">
-                <div class="mock-bar-item" style="height:30%;background:rgba(0,255,148,.3);"></div>
-                <div class="mock-bar-item" style="height:65%;background:rgba(0,255,148,.5);"></div>
-                <div class="mock-bar-item" style="height:45%;background:rgba(0,255,148,.3);"></div>
-                <div class="mock-bar-item" style="height:80%;background:rgba(0,255,148,.7);"></div>
-                <div class="mock-bar-item" style="height:55%;background:rgba(0,255,148,.4);"></div>
-                <div class="mock-bar-item" style="height:90%;background:rgba(0,255,148,.8);"></div>
-                <div class="mock-bar-item" style="height:70%;background:rgba(0,255,148,.55);"></div>
-              </div>
-              <div style="height:1px;background:rgba(255,255,255,.05);"></div>
-              <div class="mock-line"></div>
-              <div class="mock-line short"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="project-overlay"><button class="view-btn">View Project</button></div>
-    </div>
-    <div class="project-info">
-      <div class="project-type">SaaS · Dashboard</div>
-      <div class="project-title">Nexus Analytics</div>
-      <p class="project-desc">Dark-mode data dashboard for a B2B SaaS startup. Real-time charts, drill-down tables, and a clean information hierarchy that makes complex data feel effortless to read.</p>
-      <div class="result-badge">Shipped in 3 weeks · 4.9★ client rating</div>
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="tag">UI Design</span><span class="tag">React</span><span class="tag">D3.js</span>
-        </div>
-        <span class="project-year">2025</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 03 -->
-  <div class="project-card">
-    <div class="project-thumb project-thumb-3">
-      <div class="thumb-num">03</div>
-      <div class="thumb-mockup">
-        <div class="mock-brand">
-          <div class="mock-logo-shape" style="border:2px solid rgba(255,45,120,.4);background:rgba(255,45,120,.06);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);">
-            <span class="mock-logo-hex" style="color:rgba(255,45,120,.9);">AX</span>
-          </div>
-          <div class="mock-palette">
-            <div class="mock-swatch" style="background:#FF2D78;"></div>
-            <div class="mock-swatch" style="background:#1a1a1a;"></div>
-            <div class="mock-swatch" style="background:#F0EDE6;"></div>
-            <div class="mock-swatch" style="background:#FFD700;"></div>
-          </div>
-          <div class="mock-type-stack">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:rgba(255,45,120,.7);letter-spacing:.15em;">APEX</div>
-            <div style="height:4px;width:60px;background:rgba(255,45,120,.2);border-radius:2px;"></div>
-            <div style="height:4px;width:40px;background:rgba(255,255,255,.07);border-radius:2px;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-overlay"><button class="view-btn">View Project</button></div>
-    </div>
-    <div class="project-info">
-      <div class="project-type">Brand Identity · Web</div>
-      <div class="project-title">Apex Branding</div>
-      <p class="project-desc">End-to-end brand identity and website for a Lagos-based fintech startup — logo system, color palette, type hierarchy, UI kit, and a full Webflow build from zero to launch in 6 weeks.</p>
-      <div class="result-badge">Featured on Behance · 2.1k saves</div>
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="tag">Branding</span><span class="tag">Webflow</span><span class="tag">Illustrator</span>
-        </div>
-        <span class="project-year">2024</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 04 -->
-  <div class="project-card">
-    <div class="project-thumb project-thumb-4">
-      <div class="thumb-num">04</div>
-      <div class="thumb-mockup">
-        <div class="mock-browser" style="max-width:290px;">
-          <div class="mock-bar">
-            <div class="mock-dot" style="background:#FF5F56"></div>
-            <div class="mock-dot" style="background:#FFBD2E"></div>
-            <div class="mock-dot" style="background:#27C93F"></div>
-            <div class="mock-url"></div>
-          </div>
-          <div class="mock-body">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:rgba(0,200,255,.7);letter-spacing:.12em;">NOVA AGENCY</div>
-              <div style="display:flex;gap:.3rem;">
-                <div style="width:22px;height:5px;border-radius:1px;background:rgba(255,255,255,.07);"></div>
-                <div style="width:22px;height:5px;border-radius:1px;background:rgba(255,255,255,.07);"></div>
-                <div style="width:22px;height:5px;border-radius:1px;background:rgba(255,255,255,.07);"></div>
-              </div>
-            </div>
-            <div style="height:55px;background:linear-gradient(135deg,rgba(0,150,255,.1),rgba(0,255,200,.06));border-radius:3px;display:flex;align-items:center;padding:0 .5rem;gap:.5rem;">
-              <div style="width:2px;height:30px;background:rgba(0,255,148,.6);"></div>
-              <div style="display:flex;flex-direction:column;gap:.2rem;">
-                <div style="height:8px;width:80px;background:rgba(255,255,255,.12);border-radius:2px;"></div>
-                <div style="height:5px;width:50px;background:rgba(255,255,255,.06);border-radius:2px;"></div>
-              </div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem;margin-top:.3rem;">
-              <div style="height:32px;background:rgba(0,150,255,.07);border:1px solid rgba(0,200,255,.1);border-radius:2px;"></div>
-              <div style="height:32px;background:rgba(0,255,148,.04);border:1px solid rgba(0,255,148,.1);border-radius:2px;"></div>
-              <div style="height:32px;background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.1);border-radius:2px;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="project-overlay"><button class="view-btn">View Project</button></div>
-    </div>
-    <div class="project-info">
-      <div class="project-type">Agency · Web Design</div>
-      <div class="project-title">Nova Creative Agency</div>
-      <p class="project-desc">Award-winning website for a Pan-African creative agency — scroll-triggered typography reveals, magnetic cursor effects, and a bold grid system that breaks every convention on purpose.</p>
-      <div class="result-badge">Awwwards Honorable Mention</div>
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">ScrollTrigger</span>
-        </div>
-        <span class="project-year">2024</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 05 -->
-  <div class="project-card">
-    <div class="project-thumb project-thumb-5">
-      <div class="thumb-num">05</div>
-      <div class="thumb-mockup">
-        <div class="mock-mobile-pair">
-          <div class="mock-phone">
-            <div class="mock-phone-notch"></div>
-            <div style="height:35px;background:linear-gradient(135deg,rgba(255,150,0,.15),rgba(255,215,0,.08));border-radius:4px;margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:rgba(255,200,0,.7);letter-spacing:.08em;">HALAL EATS</div>
-            </div>
-            <div class="mock-app-grid">
-              <div class="mock-app-icon" style="background:rgba(255,150,0,.15);border:1px solid rgba(255,150,0,.2);"></div>
-              <div class="mock-app-icon" style="background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.15);"></div>
-              <div class="mock-app-icon" style="background:rgba(255,100,0,.1);border:1px solid rgba(255,100,0,.15);"></div>
-              <div class="mock-app-icon" style="background:rgba(200,200,200,.04);border:1px solid rgba(255,255,255,.07);"></div>
-            </div>
-            <div class="mock-feed">
-              <div class="mock-feed-item"></div>
-              <div class="mock-feed-item" style="width:75%;"></div>
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:.4rem;">
-            <div style="width:50px;height:50px;border:1px solid rgba(255,150,0,.3);background:rgba(255,150,0,.06);border-radius:4px;display:flex;align-items:center;justify-content:center;">
-              <div style="width:24px;height:24px;border:1px solid rgba(255,215,0,.4);transform:rotate(45deg);"></div>
-            </div>
-            <div style="height:5px;width:50px;background:rgba(255,150,0,.15);border-radius:2px;"></div>
-            <div style="height:5px;width:35px;background:rgba(255,255,255,.05);border-radius:2px;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-overlay"><button class="view-btn">View Project</button></div>
-    </div>
-    <div class="project-info">
-      <div class="project-type">Mobile App · UI Design</div>
-      <div class="project-title">Halal Eats App</div>
-      <p class="project-desc">Full UI/UX design for a halal food delivery app targeting the Abuja market. User research, 60+ screens, interactive prototype, and handoff-ready design system delivered in 4 weeks.</p>
-      <div class="result-badge">4,000+ downloads in first month</div>
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="tag">Figma</span><span class="tag">UI System</span><span class="tag">Prototyping</span>
-        </div>
-        <span class="project-year">2025</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 06 -->
-  <div class="project-card">
-    <div class="project-thumb project-thumb-6">
-      <div class="thumb-num">06</div>
-      <div class="thumb-mockup">
-        <div class="mock-motion">
-          <div class="mock-timeline">
-            <div class="mock-tl-header">
-              <span class="mock-tl-title">// MOTION TIMELINE</span>
-              <div class="mock-tl-controls">
-                <div class="mock-tl-btn"></div>
-                <div class="mock-tl-btn play"></div>
-                <div class="mock-tl-btn"></div>
-              </div>
-            </div>
-            <div class="mock-track">
-              <div class="mock-track-row">
-                <div class="mock-track-label"></div>
-                <div class="mock-track-line">
-                  <div class="mock-track-clip" style="left:5%;width:50%;background:rgba(180,0,255,.3);"></div>
-                  <div class="mock-playhead" style="left:30%;"></div>
+              <div class="mock-body">
+                <div class="mock-hero-block" style="background:linear-gradient(135deg,rgba(255,45,120,.15),rgba(100,0,50,.2));">
+                  <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:rgba(255,45,120,.9);letter-spacing:.1em;">LUXE</span>
                 </div>
-              </div>
-              <div class="mock-track-row">
-                <div class="mock-track-label"></div>
-                <div class="mock-track-line">
-                  <div class="mock-track-clip" style="left:20%;width:40%;background:rgba(255,45,120,.3);"></div>
-                  <div class="mock-playhead" style="left:30%;"></div>
+                <div class="mock-grid">
+                  <div class="mock-card" style="background:rgba(255,45,120,.1);border:1px solid rgba(255,45,120,.15);"></div>
+                  <div class="mock-card" style="background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.12);"></div>
+                  <div class="mock-card" style="background:rgba(255,45,120,.07);border:1px solid rgba(255,45,120,.12);"></div>
+                  <div class="mock-card" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);"></div>
                 </div>
+                <div class="mock-line"></div>
+                <div class="mock-line short"></div>
               </div>
-              <div class="mock-track-row">
-                <div class="mock-track-label"></div>
-                <div class="mock-track-line">
-                  <div class="mock-track-clip" style="left:10%;width:65%;background:rgba(0,255,148,.2);"></div>
-                  <div class="mock-playhead" style="left:30%;"></div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <button class="view-btn" onclick="toggleCard(this)">View Project</button>
+            <button class="view-btn close-btn" onclick="toggleCard(this)">✕ Close</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">E-Commerce · UI/UX</div>
+          <div class="project-title">LUXE Store UI</div>
+          <p class="project-desc">A premium fashion e-commerce experience for a Lagos-based luxury brand. Immersive product galleries, magnetic hover states, and a one-page checkout that cut cart abandonment by 40%.</p>
+          <div class="result-badge">+40% Checkout Conversion</div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag">Figma</span><span class="tag">HTML/CSS</span><span class="tag">GSAP</span>
+            </div>
+            <span class="project-year">2025</span>
+          </div>
+        </div>
+        <div class="expand-body">
+          <div class="expand-inner">
+            <div class="expand-block">
+              <div class="expand-block-title">The Challenge</div>
+              <p>The client had a product worth showing off but a checkout flow that was losing 60% of shoppers before they hit pay. The brief: make it feel as premium as the clothes — and make it convert. No clutter, no friction, no compromise on aesthetics.</p>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">What I Built</div>
+              <ul class="expand-list">
+                <li>Full-screen immersive product gallery with magnetic hover</li>
+                <li>Single-page animated checkout — zero page reloads</li>
+                <li>Custom GSAP scroll-triggered product reveals</li>
+                <li>Mobile-first responsive system, 60fps on all devices</li>
+                <li>Figma design system with 80+ reusable components</li>
+              </ul>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">Results</div>
+              <div class="expand-metrics">
+                <div class="expand-metric">
+                  <div class="expand-metric-val">+40%</div>
+                  <div class="expand-metric-label">Checkout Conversion Rate</div>
                 </div>
-              </div>
-              <div class="mock-track-row">
-                <div class="mock-track-label"></div>
-                <div class="mock-track-line">
-                  <div class="mock-track-clip" style="left:35%;width:30%;background:rgba(255,215,0,.2);"></div>
-                  <div class="mock-playhead" style="left:30%;"></div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">-58%</div>
+                  <div class="expand-metric-label">Cart Abandonment Drop</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">4.8★</div>
+                  <div class="expand-metric-label">Client Satisfaction Score</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="project-overlay"><button class="view-btn">View Project</button></div>
-    </div>
-    <div class="project-info">
-      <div class="project-type">Motion · Web Experience</div>
-      <div class="project-title">Spectral Motion Reel</div>
-      <p class="project-desc">An experimental web experience showcasing advanced CSS and GSAP animation — particle systems, scroll-driven SVG morphs, and a cinematic intro sequence. Pure browser, zero libraries needed.</p>
-      <div class="result-badge">3.2k shares on Twitter/X</div>
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="tag">GSAP</span><span class="tag">CSS Houdini</span><span class="tag">SVG</span>
+
+      <!-- 02 – Nexus Analytics -->
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-2">
+          <div class="thumb-num">02</div>
+          <div class="thumb-mockup">
+            <div class="mock-dashboard">
+              <div class="mock-dash-inner">
+                <div class="mock-sidebar">
+                  <div style="display:flex;flex-direction:column;gap:.3rem;padding:.3rem;">
+                    <div style="width:28px;height:28px;border-radius:4px;background:rgba(0,255,148,.15);border:1px solid rgba(0,255,148,.2);"></div>
+                    <div style="width:28px;height:6px;border-radius:2px;background:rgba(255,255,255,.06);"></div>
+                    <div style="width:28px;height:6px;border-radius:2px;background:rgba(255,255,255,.06);"></div>
+                    <div style="width:28px;height:6px;border-radius:2px;background:rgba(255,255,255,.06);"></div>
+                    <div style="width:28px;height:6px;border-radius:2px;background:rgba(0,255,148,.08);"></div>
+                  </div>
+                </div>
+                <div class="mock-content">
+                  <div class="mock-stat-row">
+                    <div class="mock-stat" style="background:rgba(0,255,148,.08);border:1px solid rgba(0,255,148,.12);"></div>
+                    <div class="mock-stat" style="background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.1);"></div>
+                    <div class="mock-stat" style="background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.1);"></div>
+                  </div>
+                  <div class="mock-chart-bar">
+                    <div class="mock-bar-item" style="height:30%;background:rgba(0,255,148,.3);"></div>
+                    <div class="mock-bar-item" style="height:65%;background:rgba(0,255,148,.5);"></div>
+                    <div class="mock-bar-item" style="height:45%;background:rgba(0,255,148,.3);"></div>
+                    <div class="mock-bar-item" style="height:80%;background:rgba(0,255,148,.7);"></div>
+                    <div class="mock-bar-item" style="height:55%;background:rgba(0,255,148,.4);"></div>
+                    <div class="mock-bar-item" style="height:90%;background:rgba(0,255,148,.8);"></div>
+                    <div class="mock-bar-item" style="height:70%;background:rgba(0,255,148,.55);"></div>
+                  </div>
+                  <div style="height:1px;background:rgba(255,255,255,.05);"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line short"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <button class="view-btn" onclick="toggleCard(this)">View Project</button>
+            <button class="view-btn close-btn" onclick="toggleCard(this)">✕ Close</button>
+          </div>
         </div>
-        <span class="project-year">2026</span>
+        <div class="project-info">
+          <div class="project-type">SaaS · Dashboard</div>
+          <div class="project-title">Nexus Analytics</div>
+          <p class="project-desc">Dark-mode data dashboard for a B2B SaaS startup. Real-time charts, drill-down tables, and a clean information hierarchy that makes complex data feel effortless to read.</p>
+          <div class="result-badge">Shipped in 3 weeks · 4.9★ client rating</div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag">UI Design</span><span class="tag">React</span><span class="tag">D3.js</span>
+            </div>
+            <span class="project-year">2025</span>
+          </div>
+        </div>
+        <div class="expand-body">
+          <div class="expand-inner">
+            <div class="expand-block">
+              <div class="expand-block-title">The Challenge</div>
+              <p>The startup's engineering team had built a powerful analytics engine — but the UI was a spreadsheet nightmare that confused their own sales team during demos. They needed a dashboard that could sell the product for them the moment someone opened it.</p>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">What I Built</div>
+              <ul class="expand-list">
+                <li>Dark-mode React dashboard with D3.js real-time charts</li>
+                <li>Collapsible sidebar navigation with role-based views</li>
+                <li>Drill-down data tables with inline filtering</li>
+                <li>Custom tooltip system and animated data transitions</li>
+                <li>Full component library documented in Storybook</li>
+              </ul>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">Results</div>
+              <div class="expand-metrics">
+                <div class="expand-metric">
+                  <div class="expand-metric-val">3wks</div>
+                  <div class="expand-metric-label">Design to Delivery</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">+3x</div>
+                  <div class="expand-metric-label">Demo-to-Close Rate</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">4.9★</div>
+                  <div class="expand-metric-label">Client Satisfaction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+
+      <!-- 03 – Apex Branding -->
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-3">
+          <div class="thumb-num">03</div>
+          <div class="thumb-mockup">
+            <div class="mock-brand">
+              <div class="mock-logo-shape" style="border:2px solid rgba(255,45,120,.4);background:rgba(255,45,120,.06);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);">
+                <span class="mock-logo-hex" style="color:rgba(255,45,120,.9);">AX</span>
+              </div>
+              <div class="mock-palette">
+                <div class="mock-swatch" style="background:#FF2D78;"></div>
+                <div class="mock-swatch" style="background:#1a1a1a;"></div>
+                <div class="mock-swatch" style="background:#F0EDE6;"></div>
+                <div class="mock-swatch" style="background:#FFD700;"></div>
+              </div>
+              <div class="mock-type-stack">
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:rgba(255,45,120,.7);letter-spacing:.15em;">APEX</div>
+                <div style="height:4px;width:60px;background:rgba(255,45,120,.2);border-radius:2px;"></div>
+                <div style="height:4px;width:40px;background:rgba(255,255,255,.07);border-radius:2px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <button class="view-btn" onclick="toggleCard(this)">View Project</button>
+            <button class="view-btn close-btn" onclick="toggleCard(this)">✕ Close</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Brand Identity · Web</div>
+          <div class="project-title">Apex Branding</div>
+          <p class="project-desc">End-to-end brand identity and website for a Lagos-based fintech startup — logo system, color palette, type hierarchy, UI kit, and a full Webflow build from zero to launch in 6 weeks.</p>
+          <div class="result-badge">Featured on Behance · 2.1k saves</div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag">Branding</span><span class="tag">Webflow</span><span class="tag">Illustrator</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+        <div class="expand-body">
+          <div class="expand-inner">
+            <div class="expand-block">
+              <div class="expand-block-title">The Challenge</div>
+              <p>Apex was a Lagos fintech with serious technology but zero brand presence — their logo was a default font, their website a WordPress template. They were about to close a Series A and needed an identity that could sit in a boardroom, a pitch deck, and an app store all at once.</p>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">What I Built</div>
+              <ul class="expand-list">
+                <li>Primary logo + 4 lockup variations for all contexts</li>
+                <li>Full brand guidelines: colour, type, motion, tone</li>
+                <li>Icon system of 60+ custom financial icons</li>
+                <li>Marketing website built end-to-end in Webflow</li>
+                <li>Pitch deck template and investor one-pager</li>
+              </ul>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">Results</div>
+              <div class="expand-metrics">
+                <div class="expand-metric">
+                  <div class="expand-metric-val">6wks</div>
+                  <div class="expand-metric-label">Brief to Full Launch</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">2.1k</div>
+                  <div class="expand-metric-label">Behance Saves</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">₦2B</div>
+                  <div class="expand-metric-label">Series A Raised After Launch</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 – Nova Creative Agency -->
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-4">
+          <div class="thumb-num">04</div>
+          <div class="thumb-mockup">
+            <div class="mock-browser" style="max-width:290px;">
+              <div class="mock-bar">
+                <div class="mock-dot" style="background:#FF5F56"></div>
+                <div class="mock-dot" style="background:#FFBD2E"></div>
+                <div class="mock-dot" style="background:#27C93F"></div>
+                <div class="mock-url"></div>
+              </div>
+              <div class="mock-body">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;">
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:rgba(0,200,255,.7);letter-spacing:.12em;">NOVA AGENCY</div>
+                  <div style="display:flex;gap:.3rem;">
+                    <div style="width:22px;height:5px;border-radius:1px;background:rgba(255,255,255,.07);"></div>
+                    <div style="width:22px;height:5px;border-radius:1px;background:rgba(255,255,255,.07);"></div>
+                    <div style="width:22px;height:5px;border-radius:1px;background:rgba(255,255,255,.07);"></div>
+                  </div>
+                </div>
+                <div style="height:55px;background:linear-gradient(135deg,rgba(0,150,255,.1),rgba(0,255,200,.06));border-radius:3px;display:flex;align-items:center;padding:0 .5rem;gap:.5rem;">
+                  <div style="width:2px;height:30px;background:rgba(0,255,148,.6);"></div>
+                  <div style="display:flex;flex-direction:column;gap:.2rem;">
+                    <div style="height:8px;width:80px;background:rgba(255,255,255,.12);border-radius:2px;"></div>
+                    <div style="height:5px;width:50px;background:rgba(255,255,255,.06);border-radius:2px;"></div>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem;margin-top:.3rem;">
+                  <div style="height:32px;background:rgba(0,150,255,.07);border:1px solid rgba(0,200,255,.1);border-radius:2px;"></div>
+                  <div style="height:32px;background:rgba(0,255,148,.04);border:1px solid rgba(0,255,148,.1);border-radius:2px;"></div>
+                  <div style="height:32px;background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.1);border-radius:2px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <button class="view-btn" onclick="toggleCard(this)">View Project</button>
+            <button class="view-btn close-btn" onclick="toggleCard(this)">✕ Close</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Agency · Web Design</div>
+          <div class="project-title">Nova Creative Agency</div>
+          <p class="project-desc">Award-winning website for a Pan-African creative agency — scroll-triggered typography reveals, magnetic cursor effects, and a bold grid system that breaks every convention on purpose.</p>
+          <div class="result-badge">Awwwards Honorable Mention</div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">ScrollTrigger</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+        <div class="expand-body">
+          <div class="expand-inner">
+            <div class="expand-block">
+              <div class="expand-block-title">The Challenge</div>
+              <p>Nova wanted a website that would get them on Awwwards. Not just "nice-looking" — genuinely site-of-the-day worthy. The brief had one line: "Make the browser feel alive." No templates, no trends, no playing it safe. Total creative freedom, total pressure to deliver.</p>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">What I Built</div>
+              <ul class="expand-list">
+                <li>Scroll-driven typographic reveal sequences with GSAP</li>
+                <li>Custom magnetic cursor with momentum physics</li>
+                <li>Horizontal scroll work gallery with velocity-based parallax</li>
+                <li>WebGL noise shader for the hero background</li>
+                <li>Sub-1s load time despite heavy visual effects</li>
+              </ul>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">Results</div>
+              <div class="expand-metrics">
+                <div class="expand-metric">
+                  <div class="expand-metric-val">HM</div>
+                  <div class="expand-metric-label">Awwwards Honorable Mention</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">+220%</div>
+                  <div class="expand-metric-label">Inbound Leads vs Prior Year</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">98</div>
+                  <div class="expand-metric-label">Lighthouse Performance Score</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 – Halal Eats -->
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-5">
+          <div class="thumb-num">05</div>
+          <div class="thumb-mockup">
+            <div class="mock-mobile-pair">
+              <div class="mock-phone">
+                <div class="mock-phone-notch"></div>
+                <div style="height:35px;background:linear-gradient(135deg,rgba(255,150,0,.15),rgba(255,215,0,.08));border-radius:4px;margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;">
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:rgba(255,200,0,.7);letter-spacing:.08em;">HALAL EATS</div>
+                </div>
+                <div class="mock-app-grid">
+                  <div class="mock-app-icon" style="background:rgba(255,150,0,.15);border:1px solid rgba(255,150,0,.2);"></div>
+                  <div class="mock-app-icon" style="background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.15);"></div>
+                  <div class="mock-app-icon" style="background:rgba(255,100,0,.1);border:1px solid rgba(255,100,0,.15);"></div>
+                  <div class="mock-app-icon" style="background:rgba(200,200,200,.04);border:1px solid rgba(255,255,255,.07);"></div>
+                </div>
+                <div class="mock-feed">
+                  <div class="mock-feed-item"></div>
+                  <div class="mock-feed-item" style="width:75%;"></div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:.4rem;">
+                <div style="width:50px;height:50px;border:1px solid rgba(255,150,0,.3);background:rgba(255,150,0,.06);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                  <div style="width:24px;height:24px;border:1px solid rgba(255,215,0,.4);transform:rotate(45deg);"></div>
+                </div>
+                <div style="height:5px;width:50px;background:rgba(255,150,0,.15);border-radius:2px;"></div>
+                <div style="height:5px;width:35px;background:rgba(255,255,255,.05);border-radius:2px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <button class="view-btn" onclick="toggleCard(this)">View Project</button>
+            <button class="view-btn close-btn" onclick="toggleCard(this)">✕ Close</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Mobile App · UI Design</div>
+          <div class="project-title">Halal Eats App</div>
+          <p class="project-desc">Full UI/UX design for a halal food delivery app targeting the Abuja market. User research, 60+ screens, interactive prototype, and handoff-ready design system delivered in 4 weeks.</p>
+          <div class="result-badge">4,000+ downloads in first month</div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag">Figma</span><span class="tag">UI System</span><span class="tag">Prototyping</span>
+            </div>
+            <span class="project-year">2025</span>
+          </div>
+        </div>
+        <div class="expand-body">
+          <div class="expand-inner">
+            <div class="expand-block">
+              <div class="expand-block-title">The Challenge</div>
+              <p>Abuja's halal food scene was underserved by existing delivery apps that either ignored the market or had clunky UX. The founders needed a product that felt native to Nigerian users — fast, familiar, and culturally tuned — while meeting international design standards for their investor pitch.</p>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">What I Built</div>
+              <ul class="expand-list">
+                <li>User research with 20 Abuja residents across 3 age groups</li>
+                <li>60+ screens covering onboarding, ordering, tracking & reviews</li>
+                <li>Fully interactive Figma prototype for investor demo</li>
+                <li>Design system: colours, type, spacing, icons, states</li>
+                <li>Developer handoff with annotated specs and assets</li>
+              </ul>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">Results</div>
+              <div class="expand-metrics">
+                <div class="expand-metric">
+                  <div class="expand-metric-val">4k+</div>
+                  <div class="expand-metric-label">Downloads in Month One</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">4.7★</div>
+                  <div class="expand-metric-label">App Store Rating</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">4wks</div>
+                  <div class="expand-metric-label">Research to Final Handoff</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 – Spectral Motion -->
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-6">
+          <div class="thumb-num">06</div>
+          <div class="thumb-mockup">
+            <div class="mock-motion">
+              <div class="mock-timeline">
+                <div class="mock-tl-header">
+                  <span class="mock-tl-title">// MOTION TIMELINE</span>
+                  <div class="mock-tl-controls">
+                    <div class="mock-tl-btn"></div>
+                    <div class="mock-tl-btn play"></div>
+                    <div class="mock-tl-btn"></div>
+                  </div>
+                </div>
+                <div class="mock-track">
+                  <div class="mock-track-row">
+                    <div class="mock-track-label"></div>
+                    <div class="mock-track-line">
+                      <div class="mock-track-clip" style="left:5%;width:50%;background:rgba(180,0,255,.3);"></div>
+                      <div class="mock-playhead" style="left:30%;"></div>
+                    </div>
+                  </div>
+                  <div class="mock-track-row">
+                    <div class="mock-track-label"></div>
+                    <div class="mock-track-line">
+                      <div class="mock-track-clip" style="left:20%;width:40%;background:rgba(255,45,120,.3);"></div>
+                      <div class="mock-playhead" style="left:30%;"></div>
+                    </div>
+                  </div>
+                  <div class="mock-track-row">
+                    <div class="mock-track-label"></div>
+                    <div class="mock-track-line">
+                      <div class="mock-track-clip" style="left:10%;width:65%;background:rgba(0,255,148,.2);"></div>
+                      <div class="mock-playhead" style="left:30%;"></div>
+                    </div>
+                  </div>
+                  <div class="mock-track-row">
+                    <div class="mock-track-label"></div>
+                    <div class="mock-track-line">
+                      <div class="mock-track-clip" style="left:35%;width:30%;background:rgba(255,215,0,.2);"></div>
+                      <div class="mock-playhead" style="left:30%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <button class="view-btn" onclick="toggleCard(this)">View Project</button>
+            <button class="view-btn close-btn" onclick="toggleCard(this)">✕ Close</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Motion · Web Experience</div>
+          <div class="project-title">Spectral Motion Reel</div>
+          <p class="project-desc">An experimental web experience showcasing advanced CSS and GSAP animation — particle systems, scroll-driven SVG morphs, and a cinematic intro sequence. Pure browser, zero libraries needed.</p>
+          <div class="result-badge">3.2k shares on Twitter/X</div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag">GSAP</span><span class="tag">CSS Houdini</span><span class="tag">SVG</span>
+            </div>
+            <span class="project-year">2026</span>
+          </div>
+        </div>
+        <div class="expand-body">
+          <div class="expand-inner">
+            <div class="expand-block">
+              <div class="expand-block-title">The Challenge</div>
+              <p>A self-initiated experiment to push what's possible in a browser without touching WebGL or Canvas. The goal: build a motion reel that looked like it needed a render farm, using only CSS, SVG, and vanilla JavaScript. Every frame had to hit 60fps, even on mid-range phones.</p>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">What I Built</div>
+              <ul class="expand-list">
+                <li>CSS Houdini paint worklet for animated noise textures</li>
+                <li>SVG morphing sequence across 12 keyframe states</li>
+                <li>Scroll-synchronized particle system — 200+ elements</li>
+                <li>Cinematic 8-second intro with frame-perfect timing</li>
+                <li>Fully responsive — same experience on mobile & desktop</li>
+              </ul>
+            </div>
+            <div class="expand-block">
+              <div class="expand-block-title">Results</div>
+              <div class="expand-metrics">
+                <div class="expand-metric">
+                  <div class="expand-metric-val">3.2k</div>
+                  <div class="expand-metric-label">Shares on Twitter/X</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">60fps</div>
+                  <div class="expand-metric-label">Consistent Frame Rate</div>
+                </div>
+                <div class="expand-metric">
+                  <div class="expand-metric-val">5</div>
+                  <div class="expand-metric-label">Client Enquiries From This Piece</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1413,6 +1889,25 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;pad
     heroName && heroName.addEventListener('mouseenter', () => {
       heroName.style.animation = 'none';
     });
+
+    // Expand card inline
+    function toggleCard(btn) {
+      const card = btn.closest('.project-card');
+      const isExpanded = card.classList.contains('expanded');
+
+      // Collapse any other open card first
+      document.querySelectorAll('.project-card.expanded').forEach(c => {
+        if (c !== card) c.classList.remove('expanded');
+      });
+
+      card.classList.toggle('expanded', !isExpanded);
+
+      if (!isExpanded) {
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
   </script>
 </body>
 </html>
